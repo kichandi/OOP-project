@@ -1,9 +1,11 @@
-
+import Service.TaskManager;
+import dao.TaskDao;
 import database.Database;
+import model.AcademicTask;
+import model.FitnessTask;
+import model.Task;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
 
@@ -11,26 +13,24 @@ public class Main {
 
         Database.initialize();
 
-        // Temporary test user.
-        // Replace this with proper registration later.
-        String sql = """
-                INSERT OR IGNORE INTO users (username, password_hash)
-                VALUES (?, ?)
-                """;
+        TaskDao dao = new TaskDao();
 
-        try (Connection connection = Database.connect();
-             PreparedStatement statement =
-                     connection.prepareStatement(sql)) {
+        TaskManager manager = new TaskManager();
+        manager.addTask(new  AcademicTask("Study Maths", "High", "2026-11-01"));
 
-            statement.setString(1, "testuser");
-            statement.setString(2, "TEMPORARY_HASH_PLACEHOLDER");
 
-            statement.executeUpdate();
 
-            System.out.println("Test user is ready!");
+        List<Task> tasks = dao.getallTasks();
+        System.out.println("Number of tasks: " + tasks.size());
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        dao.markComplete(10);
+        dao.deleteTask(2);
+        System.out.println("total score:"+manager.getTotalPoints());
+
+        for (Task t : tasks) {
+            System.out.println(t.getId() + " " + t.getTitle()
+                    + " " + t.getType() + " " + t.getPriority() + " "+t.getStatus());
+
         }
     }
 }

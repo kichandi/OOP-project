@@ -1,51 +1,39 @@
 package Service;
 
-import model.*;
-import java.util.ArrayList;
+import model.Task;
+import dao.TaskDao;
+import java.util.List;
+
+
 
 public class TaskManager {
+    private TaskDao dao = new TaskDao();
 
-
-    private ArrayList<Task> tasks = new ArrayList<>();
-
-    public void addTask(String title, String priority,
-                        String deadline, String type) {
-
-        Task task;
-
-        switch (type.toLowerCase()) {
-            case "academic":
-                task = new AcademicTask(title, priority, deadline, "maths");
-                break;
-
-            case "fitness":
-                task = new FitnessTask(
-                        title, priority, deadline,
-                        "Gym", "60", "0"
-
-                );
-                break;
-
-            case "personal":
-                task = new PersonalTask(
-                        title, priority, deadline,
-                        "Household"
-                );
-                break;
-
-            case "project":
-                task = new ProjectTask(
-                        title, priority, deadline,
-                        "Whiplash", title, 60, 0
-                );
-                break;
-
-            default:
-                System.out.println("Invalid task type!");
-                return;
+    public void addTask(Task task){
+        if(task.getTitle()==null || task.getTitle().equals("")){
+            System.out.println("Title is empty");
+            return;
         }
+        dao.addTask(task);
+    }
 
-        tasks.add(task);
-        System.out.println("Task added successfully!");
+    public void removeTask(int id) {
+        dao.deleteTask(id);
+    }
+    public void completeTask(int id) {
+        dao.markComplete(id);
+    }
+    public List<Task> getAllTasks() {
+        return dao.getallTasks();
+    }
+    public int getTotalPoints() {
+        int total = 0;
+        for (Task t : dao.getallTasks()) {
+            if (t.getStatus()) {
+                total += t.calculatePoints();
+            }
+        }
+        return total;
     }
 }
+

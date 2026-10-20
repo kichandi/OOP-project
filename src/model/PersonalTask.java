@@ -6,11 +6,11 @@ public class PersonalTask extends Task {
 
 
     public PersonalTask(String title, String priority,
-                        String deadline, String taskType) {
+                        String deadline) {
 
         super(title, priority, deadline);
 
-        this.taskType = taskType;
+
 
     }
     public String getTitle(){
@@ -28,12 +28,12 @@ public class PersonalTask extends Task {
     public boolean isComplete(){
         return status;
     }
-    public String getType(){
-        return "personal";
-    }
 
+    public String getType(){
+        return "Personal";
+    }
     @Override
     public int calculatePoints() {
-        return 0;
+        return 10;
     }
 }
