@@ -31,4 +31,23 @@ public class ProjectTask extends Task {
 
         return 10;
     }
+    public String getTitle(){
+        return title;
+    }
+
+    public String getPriority(){
+        return priority;
+    }
+
+    public String getDeadline(){
+        return deadline;
+    }
+
+    public boolean isComplete(){
+        return status;
+    }
+    public String getType(){
+        return "project";
+    }
+
 }

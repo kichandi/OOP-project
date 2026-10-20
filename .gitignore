@@ -24,6 +24,9 @@ bin/
 
 ### VS Code ###
 .vscode/
-
+currentstate.md
+Java_project.iml
+.idea
+taskmanagementsystem.db
 ### Mac OS ###
 .DS_Store

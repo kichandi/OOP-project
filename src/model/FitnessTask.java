@@ -13,6 +13,37 @@ public class FitnessTask extends Task {
 
     }
 
+    public String getTitle(){
+        return title;
+    }
+
+    public String getPriority(){
+        return priority;
+    }
+
+    public String getDeadline(){
+        return deadline;
+    }
+
+    public boolean isComplete(){
+        return status;
+    }
+    public String getType(){
+        return "Fitness";
+
+    }
+
+    public String getActivityType(){
+        return activity_type;
+
+    }
+
+    public String getTargetDuration(){
+        return target_duration;
+    }
+    public String getActualDuration(){
+        return actual_duration;
+    }
     @Override
     public int calculatePoints() {
         return 20;

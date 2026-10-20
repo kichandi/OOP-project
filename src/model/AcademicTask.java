@@ -15,11 +15,28 @@ public class AcademicTask extends model.Task{
 
     }
 
+    public String getTitle(){
+        return title;
+    }
+
+    public String getPriority(){
+        return priority;
+    }
+
+    public String getDeadline(){
+        return deadline;
+    }
+
     public boolean isComplete(){
         return status;
     }
 
+    public String getSubjectname(){
+        return Subjectname;
+    }
 
-
+    public String getType(){
+        return "academic";
+    }
 
 }

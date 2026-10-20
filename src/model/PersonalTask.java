@@ -13,6 +13,24 @@ public class PersonalTask extends Task {
         this.taskType = taskType;
 
     }
+    public String getTitle(){
+        return title;
+    }
+
+    public String getPriority(){
+        return priority;
+    }
+
+    public String getDeadline(){
+        return deadline;
+    }
+
+    public boolean isComplete(){
+        return status;
+    }
+    public String getType(){
+        return "personal";
+    }
 
     @Override
     public int calculatePoints() {
