@@ -45,6 +45,7 @@ public class Database {
         } catch (SQLException e) {
             System.err.println("Database initialization failed!");
             e.printStackTrace();
+
         }
     }
 }

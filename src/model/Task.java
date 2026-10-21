@@ -3,12 +3,12 @@ package model;
 
 public abstract class Task {
 
-    protected String title;
-    protected String priority;
-    protected boolean status;
-    protected String deadline;
-    protected int points = 0;
-    protected int id;
+    private String title;
+    private String priority;
+    private boolean status;
+    private String deadline;
+
+    private int id;
 
     public Task(String title, String priority, String deadline) {
         this.title = title;
@@ -49,7 +49,5 @@ public abstract class Task {
         this.status = status;
     }
 
-    public int getPoints() {
-        return points;
-    }
+
 }

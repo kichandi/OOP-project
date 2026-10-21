@@ -87,7 +87,6 @@ public class TaskDao {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
     }
 }
 
